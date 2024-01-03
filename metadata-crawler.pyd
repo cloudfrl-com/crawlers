@@ -1,0 +1,75 @@
+# Import the requests and BeautifulSoup libraries
+import requests
+from bs4 import BeautifulSoup
+
+# Define a function that takes a URL as input and returns a dictionary with the metadata
+def get_metadata(url):
+    # Make a GET request and parse the HTML response
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # Define the selectors for the metadata elements
+    title_selector = "head > title"
+    description_selector = "meta[name=description]"
+    keywords_selector = "meta[name=keywords]"
+
+    # Extract the metadata from the HTML
+    title = soup.select_one(title_selector).get_text() if soup.select_one(title_selector) else None
+    description = soup.select_one(description_selector)["content"] if soup.select_one(description_selector) else None
+    keywords = soup.select_one(keywords_selector)["content"] if soup.select_one(keywords_selector) else None
+
+    # Return a dictionary with the metadata
+    return {
+        "url": url,
+        "title": title,
+        "description": description,
+        "keywords": keywords
+    }
+
+# Call the function with an example URL and print the result
+metadata = get_metadata("https://www.bing.com")
+print(metadata)
+```
+
+This is just one example of how to write a web crawler in Python. You can find more resources and examples on the web, such as [this blog post](^1^) or [this website](^2^). I hope this helps you with your project. 😊.
+
+Source: Conversation with Bing, 4-1-2024
+(1) Web crawling with Python | ScrapingBee. https://www.scrapingbee.com/blog/crawling-python/.
+(2) Scrapy | A Fast and Powerful Scraping and Web Crawling Framework. https://scrapy.org/.
+(3) Web Crawler in Python: Step-by-Step Tutorial 2024 - ZenRows. https://www.zenrows.com/blog/web-crawler-python.
+(4) How to Build Web Crawlers Using Python | Octoparse. https://www.octoparse.com/blog/build-web-crawler-with-python.
+(5) How to Crawl the Web with Python - ScrapFly Blog. https://scrapfly.io/blog/crawling-with-python/.
+(6) undefined. https://www.zyte.com/blog/.
+(7) undefined. https://app.zyte.com/p/26731/job/1/8.
+(8) Getty Images. https://www.gettyimages.com/detail/photo/internet-spider-royalty-free-image/488950484.
+# Import the requests and BeautifulSoup libraries
+import requests
+from bs4 import BeautifulSoup
+
+# Define a function that takes a URL as input and returns a dictionary with the metadata
+def get_metadata(url):
+    # Make a GET request and parse the HTML response
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # Define the selectors for the metadata elements
+    title_selector = "head > title"
+    description_selector = "meta[name=description]"
+    keywords_selector = "meta[name=keywords]"
+
+    # Extract the metadata from the HTML
+    title = soup.select_one(title_selector).get_text() if soup.select_one(title_selector) else None
+    description = soup.select_one(description_selector)["content"] if soup.select_one(description_selector) else None
+    keywords = soup.select_one(keywords_selector)["content"] if soup.select_one(keywords_selector) else None
+
+    # Return a dictionary with the metadata
+    return {
+        "url": url,
+        "title": title,
+        "description": description,
+        "keywords": keywords
+    }
+
+# Call the function with an example URL and print the result
+metadata = get_metadata("https://www.bing.com")
+print(metadata)
